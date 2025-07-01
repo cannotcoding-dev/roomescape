@@ -1,0 +1,235 @@
+.inventory {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.inventory-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid #667eea;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.inventory-toggle:hover {
+  background: #667eea;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+}
+
+.inventory-icon {
+  font-size: 1.5rem;
+}
+
+.inventory-count {
+  background: #dc3545;
+  color: white;
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+}
+
+.inventory-content {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.5rem;
+  width: 300px;
+  max-height: 400px;
+  background: white;
+  border: 2px solid #667eea;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  animation: slideDown 0.3s ease;
+}
+
+.inventory-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #667eea;
+  color: white;
+}
+
+.inventory-header h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.inventory-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.inventory-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.inventory-body {
+  padding: 1rem;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.inventory-empty {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: #666;
+}
+
+.inventory-empty p {
+  margin: 0 0 0.5rem;
+  font-weight: 500;
+}
+
+.inventory-empty small {
+  color: #999;
+}
+
+.inventory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.inventory-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.inventory-item:hover {
+  border-color: #667eea;
+  background: #f8f9ff;
+  transform: translateY(-2px);
+}
+
+.inventory-item--selected {
+  border-color: #667eea;
+  background: #f8f9ff;
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+}
+
+.item-icon {
+  font-size: 2rem;
+}
+
+.item-name {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #333;
+  line-height: 1.2;
+}
+
+.item-details {
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.item-details h4 {
+  margin: 0 0 0.5rem;
+  color: #333;
+  font-size: 1rem;
+}
+
+.item-description {
+  margin: 0 0 0.75rem;
+  color: #666;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.item-combinations {
+  padding-top: 0.5rem;
+  border-top: 1px solid #e9ecef;
+}
+
+.item-combinations small {
+  color: #999;
+  font-style: italic;
+}
+
+/* Animations */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .inventory {
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+
+  .inventory-content {
+    width: 280px;
+    right: -1rem;
+  }
+
+  .inventory-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Scrollbar styling */
+.inventory-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.inventory-body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.inventory-body::-webkit-scrollbar-thumb {
+  background: #667eea;
+  border-radius: 3px;
+}
+
+.inventory-body::-webkit-scrollbar-thumb:hover {
+  background: #5a6fd8;
+}
