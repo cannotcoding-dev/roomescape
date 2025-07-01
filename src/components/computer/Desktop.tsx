@@ -19,7 +19,7 @@ interface DesktopWindow {
 }
 
 export function Desktop() {
-  const { state, hasFlag, changeScene } = useGame();
+  const { hasFlag, changeScene } = useGame();
   const [windows, setWindows] = useState<DesktopWindow[]>([]);
   const [nextZIndex, setNextZIndex] = useState(100);
 

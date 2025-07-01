@@ -9,6 +9,7 @@ interface ButtonProps {
   size?: 'small' | 'medium' | 'large';
   fullWidth?: boolean;
   className?: string;
+  title?: string;
 }
 
 export function Button({
@@ -19,6 +20,7 @@ export function Button({
   size = 'medium',
   fullWidth = false,
   className = '',
+  title,
 }: ButtonProps) {
   const baseClass = 'btn';
   const variantClass = `btn--${variant}`;
@@ -43,6 +45,7 @@ export function Button({
       onClick={onClick}
       disabled={disabled}
       type="button"
+      title={title}
     >
       {children}
     </button>

@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useReducer, useEffect } from 'react';
-import { GameState, GameEffect, Item, EndingType } from '../types/game';
+import type { GameState, GameEffect, Item, EndingType } from '../types/game';
+import { createItem } from '../data/items';
 
 interface GameContextType {
   state: GameState;
@@ -120,7 +121,6 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       switch (effect.type) {
         case 'addItem':
           try {
-            const { createItem } = require('../data/items');
             const item = createItem(effect.target!);
             addItem(item);
           } catch (error) {

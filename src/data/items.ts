@@ -1,4 +1,4 @@
-import { Item } from '../types/game';
+import type { Item } from '../types/game';
 
 export const gameItems: Record<string, Item> = {
   'mysterious-usb': {

@@ -70,8 +70,8 @@ function WindowFrame({ window, onClose, onMinimize, onUpdate, onFocus }: WindowF
     if (!isDragging) return;
 
     const handleMouseMove = (e: MouseEvent) => {
-      const newX = Math.max(0, Math.min(e.clientX - dragOffset.x, window.innerWidth - window.size.width));
-      const newY = Math.max(0, Math.min(e.clientY - dragOffset.y, window.innerHeight - window.size.height));
+      const newX = Math.max(0, Math.min(e.clientX - dragOffset.x, globalThis.innerWidth - window.size.width));
+      const newY = Math.max(0, Math.min(e.clientY - dragOffset.y, globalThis.innerHeight - window.size.height));
       
       onUpdate({
         position: { x: newX, y: newY }
@@ -89,7 +89,7 @@ function WindowFrame({ window, onClose, onMinimize, onUpdate, onFocus }: WindowF
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);
     };
-  }, [isDragging, dragOffset, onUpdate, window.size, window.innerWidth, window.innerHeight]);
+  }, [isDragging, dragOffset, onUpdate, window.size]);
 
   const Component = window.component;
 

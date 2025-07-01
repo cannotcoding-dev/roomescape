@@ -1,4 +1,4 @@
-import { StoryNode } from '../types/game';
+import type { StoryNode } from '../types/game';
 
 export const storyNodes: Record<string, StoryNode> = {
   // 게임 시작
