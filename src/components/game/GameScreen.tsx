@@ -4,6 +4,7 @@ import { storyNodes } from '../../data/story';
 import { Button } from '../ui/Button';
 import { Timer } from './Timer';
 import { Inventory } from './Inventory';
+import { Desktop } from '../computer/Desktop';
 import './GameScreen.css';
 
 export function GameScreen() {
@@ -84,33 +85,39 @@ export function GameScreen() {
       <div className="game-content">
         {/* Story display */}
         <div className="story-area">
-          <div className={`scene-background scene-background--${currentNode.backgroundType}`}>
-            <div className="story-content">
-              <h2 className="scene-title">{currentNode.title}</h2>
-              <div className="scene-description">
-                {formatDescription(currentNode.description)}
+          {currentNode.backgroundType === 'computer' ? (
+            <Desktop />
+          ) : (
+            <div className={`scene-background scene-background--${currentNode.backgroundType}`}>
+              <div className="story-content">
+                <h2 className="scene-title">{currentNode.title}</h2>
+                <div className="scene-description">
+                  {formatDescription(currentNode.description)}
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
 
         {/* Choices area */}
-        <div className="choices-area">
-          <div className="choices-container">
-            {currentNode.choices.map((choice) => (
-              <Button
-                key={choice.id}
-                onClick={() => handleChoice(choice)}
-                disabled={isChoiceDisabled(choice)}
-                variant={choice.id.includes('danger') ? 'danger' : 'primary'}
-                className="choice-button"
-                title={getChoiceTooltip(choice)}
-              >
-                {choice.text}
-              </Button>
-            ))}
+        {currentNode.backgroundType !== 'computer' && (
+          <div className="choices-area">
+            <div className="choices-container">
+              {currentNode.choices.map((choice) => (
+                <Button
+                  key={choice.id}
+                  onClick={() => handleChoice(choice)}
+                  disabled={isChoiceDisabled(choice)}
+                  variant={choice.id.includes('danger') ? 'danger' : 'primary'}
+                  className="choice-button"
+                  title={getChoiceTooltip(choice)}
+                >
+                  {choice.text}
+                </Button>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       {/* Inventory sidebar */}

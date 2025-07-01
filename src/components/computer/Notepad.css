@@ -1,0 +1,203 @@
+.notepad {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #f8f9fa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.notepad-menubar {
+  display: flex;
+  background: #f0f0f0;
+  border-bottom: 1px solid #ccc;
+  padding: 0.25rem 0.5rem;
+}
+
+.menu-item {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.menu-item:hover {
+  background: #e0e0e0;
+}
+
+.notepad-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.toolbar-button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #ccc;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.toolbar-button:hover {
+  background: #e9ecef;
+  border-color: #999;
+}
+
+.toolbar-button.active {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.toolbar-separator {
+  width: 1px;
+  height: 24px;
+  background: #ccc;
+  margin: 0 0.25rem;
+}
+
+.font-size-display {
+  padding: 0 0.5rem;
+  font-size: 0.8rem;
+  color: #666;
+  min-width: 40px;
+  text-align: center;
+}
+
+.notepad-editor {
+  flex: 1;
+  padding: 0;
+  background: white;
+  overflow: hidden;
+}
+
+.notepad-textarea {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  padding: 1rem;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  background: white;
+  color: #333;
+  resize: none;
+  overflow: auto;
+}
+
+.notepad-textarea::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+.notepad-statusbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem 1rem;
+  background: #f0f0f0;
+  border-top: 1px solid #ccc;
+  font-size: 0.8rem;
+  color: #666;
+  min-height: 24px;
+}
+
+.status-left,
+.status-center,
+.status-right {
+  flex: 1;
+}
+
+.status-center {
+  text-align: center;
+}
+
+.status-right {
+  text-align: right;
+}
+
+/* Scrollbar styling for textarea */
+.notepad-textarea::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+.notepad-textarea::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.notepad-textarea::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 6px;
+}
+
+.notepad-textarea::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+.notepad-textarea::-webkit-scrollbar-corner {
+  background: #f1f1f1;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .notepad-menubar {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .notepad-toolbar {
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+
+  .toolbar-group {
+    gap: 0.125rem;
+  }
+
+  .toolbar-button {
+    width: 28px;
+    height: 28px;
+    font-size: 0.75rem;
+  }
+
+  .font-size-display {
+    font-size: 0.7rem;
+    min-width: 30px;
+  }
+
+  .notepad-textarea {
+    padding: 0.5rem;
+    font-size: 12px;
+  }
+
+  .notepad-statusbar {
+    flex-direction: column;
+    gap: 0.25rem;
+    text-align: center;
+  }
+
+  .status-left,
+  .status-center,
+  .status-right {
+    text-align: center;
+  }
+}

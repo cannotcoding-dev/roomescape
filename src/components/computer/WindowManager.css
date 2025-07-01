@@ -1,0 +1,148 @@
+.window-frame {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+}
+
+.window-titlebar {
+  background: linear-gradient(180deg, #f0f0f0 0%, #e0e0e0 100%);
+  border-bottom: 1px solid #ccc;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: move;
+  min-height: 32px;
+}
+
+.window-titlebar:active {
+  cursor: grabbing;
+}
+
+.window-title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  margin-right: 1rem;
+}
+
+.window-controls {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.window-control {
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  transition: background-color 0.2s ease;
+}
+
+.window-control.minimize {
+  background: #ffc107;
+  color: #856404;
+}
+
+.window-control.minimize:hover {
+  background: #ffca2c;
+}
+
+.window-control.maximize {
+  background: #28a745;
+  color: #155724;
+}
+
+.window-control.maximize:hover:not(.disabled) {
+  background: #32d74b;
+}
+
+.window-control.maximize.disabled {
+  background: #6c757d;
+  color: white;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.window-control.close {
+  background: #dc3545;
+  color: white;
+}
+
+.window-control.close:hover {
+  background: #e55353;
+}
+
+.window-content {
+  flex: 1;
+  overflow: hidden;
+  background: white;
+}
+
+/* Window focus styles */
+.window-frame:focus-within .window-titlebar {
+  background: linear-gradient(180deg, #0078d4 0%, #005a9e 100%);
+  color: white;
+}
+
+.window-frame:focus-within .window-title {
+  color: white;
+}
+
+/* Animation for new windows */
+.window-frame {
+  animation: windowOpen 0.3s ease;
+}
+
+@keyframes windowOpen {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .window-frame {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    border-radius: 0;
+    z-index: 9999 !important;
+  }
+
+  .window-titlebar {
+    padding: 0.75rem 1rem;
+    min-height: 48px;
+  }
+
+  .window-control {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+
+  .window-title {
+    font-size: 1rem;
+  }
+}
